@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Python,SQLAlchemy,Flask," />
 
 
 
@@ -94,12 +94,14 @@
 
 
 <meta name="description" content="123456789101112131415161718192021222324252627282930313233#简单查询    print(session.query(User).all())    print(session.query(User.name, User.fullname).all())    print(session.query(User, User.name).all()">
+<meta name="keywords" content="Python,SQLAlchemy,Flask">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQLAlchemy用法总结">
 <meta property="og:url" content="http://yoursite.com/2017/07/28/SQLAlchemy用法总结/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="123456789101112131415161718192021222324252627282930313233#简单查询    print(session.query(User).all())    print(session.query(User.name, User.fullname).all())    print(session.query(User, User.name).all()">
-<meta property="og:updated_time" content="2017-07-28T13:25:03.134Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-28T14:08:09.788Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQLAlchemy用法总结">
 <meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233#简单查询    print(session.query(User).all())    print(session.query(User.name, User.fullname).all())    print(session.query(User, User.name).all()">
@@ -116,7 +118,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -154,7 +156,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -202,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            首页
           </a>
         </li>
       
@@ -212,7 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            归档
           </a>
         </li>
       
@@ -222,7 +224,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
@@ -258,7 +260,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/28/SQLAlchemy用法总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Joe">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -282,9 +284,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-28T21:16:19+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-28T21:16:19+08:00">
                 2017-07-28
               </time>
             
@@ -294,6 +296,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SQLAlchemy/" itemprop="url" rel="index">
+                    <span itemprop="name">SQLAlchemy</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -369,6 +393,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/SQLAlchemy/" rel="tag"># SQLAlchemy</a>
+          
+            <a href="/tags/Flask/" rel="tag"># Flask</a>
+          
+        </div>
+      
 
       
       
@@ -439,8 +473,8 @@
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
-               alt="John Doe" />
-          <p class="site-author-name" itemprop="name">John Doe</p>
+               alt="Joe" />
+          <p class="site-author-name" itemprop="name">Joe</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
           
@@ -450,14 +484,32 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
@@ -500,16 +552,16 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">Joe</span>
 </div>
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
