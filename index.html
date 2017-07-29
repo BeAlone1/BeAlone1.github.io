@@ -364,31 +364,15 @@
       
         
           
-            <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#简单查询    </span></div><div class="line">print(session.query(User).all())    </div><div class="line">print(session.query(User.name, User.fullname).all())    </div><div class="line">print(session.query(User, User.name).all())   </div><div class="line">     </div><div class="line"><span class="comment">#带条件查询    </span></div><div class="line">print(session.query(User).filter_by(name=<span class="string">'user1'</span>).all())    </div><div class="line">print(session.query(User).filter(User.name == <span class="string">"user"</span>).all())    </div><div class="line">print(session.query(User).filter(User.name.like(<span class="string">"user%"</span>)).all())       </div><div class="line"></div><div class="line"><span class="comment">#多条件查询    </span></div><div class="line">print(session.query(User).filter(and_(User.name.like(<span class="string">"user%"</span>), User.fullname.like(<span class="string">"first%"</span>))).all())    </div><div class="line">print(session.query(User).filter(or_(User.name.like(<span class="string">"user%"</span>), User.password != <span class="keyword">None</span>)).all())       </div><div class="line"></div><div class="line"><span class="comment">#sql过滤    </span></div><div class="line">print(session.query(User).filter(<span class="string">"id&gt;:id"</span>).params(id=<span class="number">1</span>).all())  </div><div class="line">      </div><div class="line"><span class="comment">#关联查询     </span></div><div class="line">print(session.query(User, Address).filter(User.id == Address.user_id).all())    </div><div class="line">print(session.query(User).join(User.addresses).all())    </div><div class="line">print(session.query(User).outerjoin(User.addresses).all())</div><div class="line">        </div><div class="line"><span class="comment">#聚合查询    </span></div><div class="line">print(session.query(User.name, func.count(<span class="string">'*'</span>).label(<span class="string">"user_count"</span>)).group_by(User.name).all())    </div><div class="line">print(session.query(User.name, func.sum(User.id).label(<span class="string">"user_id_sum"</span>)).group_by(User.name).all())        </div><div class="line"></div><div class="line"><span class="comment">#子查询    </span></div><div class="line">stmt = session.query(Address.user_id, func.count(<span class="string">'*'</span>).label(<span class="string">"address_count"</span>)).group_by(Address.user_id).subquery()    </div><div class="line">print(session.query(User, stmt.c.address_count).outerjoin((stmt, User.id == stmt.c.user_id)).order_by(User.id).all())        </div><div class="line"></div><div class="line"><span class="comment">#exists    </span></div><div class="line">print(session.query(User).filter(exists().where(Address.user_id == User.id)))    </div><div class="line">print(session.query(User).filter(User.addresses.any()))</div></pre></td></tr></table></figure>
-<p>可以用from SQLAlchemy import func 来用sql里面的函数，如 <code>func.count(&#39;User.id&#39;)</code> 或者 <code>func.count(&#39;*&#39;)</code></p>
-<p>在flask-sqlalchemy里使用SQL函数是用 <code>db = SQLAlchemy()  db.desc()   db.count(&#39;*&#39;)</code> 来使用</p>
-<ul>
-<li><strong>条件查询</strong>  <ul>
-<li>还可以用 User.name.in_([‘qwe’, ‘asd’]) 来用in方法。 另外new_user = User(‘name’, ‘passwd’) 新建用户后， 执行db.commit() 后， new_user会自动有了u<em>id，意思就是在commit之后， 那个instance 会刷新， 里面的属性会拥有数据库自动生成的属性 。 同in</em> 还有 is<em>, like, ilike(不区分大小写), ~User.name.in(not in), isnot(比如None, 和 != None 相同，判定不为空), or</em>, and_, match  </li>
-<li>User.name.label(‘another_name’) 相当与SQL里的 select name asother_name form users.  </li>
-<li>可以在query后面有多个filter， 相当与SQL里的 and.  </li>
-</ul>
-</li>
-<li><p><strong>结果筛选</strong>  </p>
-<ul>
-<li><p>all()  把所有查询到的结果作为一个列表返回， 如果没有返回空列表</p>
-</li>
-<li><p>first() 只返回查询到的第一个结果， 如果无， 返回None</p>
-</li>
-<li><p>one() 如果查询结果是多个或者为空， 就raise一个异常。</p>
-</li>
-<li><p>one_or_none() 如果没有数据就返回None, 多个数据就raise异常。</p>
-</li>
-</ul>
-</li>
-</ul>
-
-          
+          123456789101112131415161718192021222324252627282930313233#简单查询    print(session.query(User).all())    print(session.query(User.name, User.fullname).al
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/28/SQLAlchemy用法总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -520,23 +504,16 @@
       
         
           
-            <h3 id="更新"><a href="#更新" class="headerlink" title="=========更新==========="></a>=========更新===========</h3><p>在我的home看到一个lib文件夹，用 <code>sudo rm -rf lib/</code> 删除了，但是什么命令也都不能用了，并且开机提示没法找到主分区，GG!</p>
-<p>换了manjaro linux kde桌面，不太好用挺慢的，不过manjaro linux挺不错的，是archlinux的衍生版，如果重新安装我会选择xfce桌面，先用着吧。<br><br><br></p>
-<h3 id="分割线"><a href="#分割线" class="headerlink" title="========分割线=========="></a>========分割线==========</h3><p>在我的archlinux手贱不知怎么就升级了openssl后，各种依赖ssl的程序突然就不能用了，wiki是说:</p>
-<blockquote>
-<h3 id="pacman-完全坏掉，如何修复"><a href="#pacman-完全坏掉，如何修复" class="headerlink" title="pacman 完全坏掉，如何修复?"></a>pacman 完全坏掉，如何修复?</h3><p>  如果 pacman 完全坏掉不能使用，需要手动下载或构建需要的软件包&gt;(openssl, libarchive 和 pacman) 并解压到根目录。pacman 会和默认配置文件一起恢复。之后，用 pacman 重新安装这些软件包以保证数据库的完整性。</p>
-</blockquote>
-<p>放下面pacman会你妈的自动修复？，后来又去archlinux的bbs的pacman版块看，是说:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line">arch=x86_64</div><div class="line">mirror=http://mirror.rit.edu/archlinux</div><div class="line"></div><div class="line"><span class="comment"># link to cache (or download) and extract: openssl,libarchive,libfetch,pacman</span></div><div class="line"><span class="built_in">cd</span> /tmp</div><div class="line"><span class="keyword">for</span> pkg <span class="keyword">in</span> openssl-1.0.0-2 libarchive-2.8.3-3 libfetch-2.30-3 pacman-3.3.3-5; <span class="keyword">do</span></div><div class="line">    pkgname=<span class="variable">$&#123;pkg&#125;</span>-<span class="variable">$&#123;arch&#125;</span>.pkg.tar.gz</div><div class="line">    <span class="keyword">if</span> [[ -e /var/cache/pacman/pkg/<span class="variable">$&#123;pkgname&#125;</span> ]]; <span class="keyword">then</span></div><div class="line">        ln -sf /var/cache/pacman/pkg/<span class="variable">$&#123;pkgname&#125;</span> .</div><div class="line">    <span class="keyword">else</span></div><div class="line">        wget <span class="variable">$&#123;mirror&#125;</span>/core/os/<span class="variable">$&#123;arch&#125;</span>/<span class="variable">$&#123;pkgname&#125;</span> || <span class="built_in">exit</span> 1</div><div class="line">    <span class="keyword">fi</span></div><div class="line">    sudo tar -xvpf <span class="variable">$&#123;pkgname&#125;</span> -C / --exclude .PKGINFO --exclude .INSTALL || <span class="built_in">exit</span> 1</div><div class="line"><span class="keyword">done</span></div><div class="line"></div><div class="line"><span class="comment"># now reinstall using pacman to update the local pacman db </span></div><div class="line">sudo pacman -Sf openssl libarchive libfetch pacman || <span class="built_in">exit</span> 1</div><div class="line"></div><div class="line"><span class="comment"># now update your system</span></div><div class="line">sudo pacman -Syu</div></pre></td></tr></table></figure></p>
-<p>mirror修改,以及把各个包的名字都是最新的了，然后无效的-f选项，我以为是–force就可以，狗屁！</p>
-<p>用最笨的方法了只能。</p>
-<p>因为libcurl先报错，把curl升级最新，后来ssh2报错，升级ssh2，ssh2依赖dnssce,再下载它，一步一步更新，最后终于能pacman -Syy了，终于忍不住-Su了，又是各种文件已经存在不能更新，直接pacman -Syyu –force，更新！！！！</p>
-<hr>
-<p>然后： </p>
-<p>以前就有耳闻archlinux滚挂的传统，不负众望，开机就挂了，不能挂载EFI分区，我以为是fstab有问题，用的uuid来挂载EFI，把它换成partuuid，不行，直接/dev/sda1,不是不行，但是最初留了个心眼，bios里还有grub启动选项，试试grub启动，竟然可以进去！！！！！！</p>
-<p>思考: 如果能进去没有出现挂载问题就肯定不是fstab的问题，而EFI分区启动步骤是用的efi文件读取efi分区里的archlinux启动配置，引导系统的是在EFI分区里的系统引导文件，而grub是用的/boot目录的引导文件，所以可能是更新系统后引导文件也更新了，过去的不能用了。</p>
-<p>于是把两个文件cp进EFI分区，ok，可以了。</p>
-
-          
+          =========更新===========在我的home看到一个lib文件夹，用 sudo rm -rf lib/ 删除了，但是什么命令也都不能用了，并且开机提示没法找到主分区，GG!
+换了manjaro linux kde桌面，不太好用挺慢的，不过manjaro linux挺不错的，是archl
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/28/ArchLinux-更新后无法挂载EFI分区/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
